@@ -68,23 +68,4 @@ class LaunchScreenViewController: UIViewController {
                                  width: labelWidth,
                                  height: labelHeigth)
     }
-    
-//    private func setupConstraints() {
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-//            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)])
-//    }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

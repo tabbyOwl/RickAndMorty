@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA456DA52A90687D005209CC /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DA42A90687D005209CC /* MainScreenViewController.swift */; };
+		DA456DA72A906967005209CC /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DA62A906967005209CC /* MainCollectionViewCell.swift */; };
+		DA456DAB2A906E62005209CC /* DataServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DAA2A906E62005209CC /* DataServise.swift */; };
+		DA456DAF2A906EA1005209CC /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DAE2A906EA1005209CC /* Character.swift */; };
+		DA456DB12A906FB7005209CC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DB02A906FB7005209CC /* Response.swift */; };
+		DA456DB32A9074BF005209CC /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DB22A9074BF005209CC /* Info.swift */; };
+		DA456DB52A9075DB005209CC /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DB42A9075DB005209CC /* UIImageView+URL.swift */; };
+		DA456DB82A908A19005209CC /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA456DB72A908A19005209CC /* DetailsTableViewController.swift */; };
 		DA97D61D2A8F912D00885FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97D61C2A8F912D00885FB2 /* AppDelegate.swift */; };
 		DA97D61F2A8F912D00885FB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97D61E2A8F912D00885FB2 /* SceneDelegate.swift */; };
 		DA97D6262A8F912E00885FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA97D6252A8F912E00885FB2 /* Assets.xcassets */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA456DA42A90687D005209CC /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		DA456DA62A906967005209CC /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		DA456DAA2A906E62005209CC /* DataServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServise.swift; sourceTree = "<group>"; };
+		DA456DAE2A906EA1005209CC /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		DA456DB02A906FB7005209CC /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DA456DB22A9074BF005209CC /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		DA456DB42A9075DB005209CC /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
+		DA456DB72A908A19005209CC /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 		DA97D6192A8F912D00885FB2 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA97D61C2A8F912D00885FB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA97D61E2A8F912D00885FB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +51,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA456DA82A906977005209CC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA456DA42A90687D005209CC /* MainScreenViewController.swift */,
+				DA456DB72A908A19005209CC /* DetailsTableViewController.swift */,
+				DA97D6332A8F922200885FB2 /* LaunchScreenViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DA456DA92A90698D005209CC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DA456DA62A906967005209CC /* MainCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DA456DAC2A906E6F005209CC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DA456DAA2A906E62005209CC /* DataServise.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		DA456DAD2A906E94005209CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA456DAE2A906EA1005209CC /* Character.swift */,
+				DA456DB02A906FB7005209CC /* Response.swift */,
+				DA456DB22A9074BF005209CC /* Info.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA456DB62A9075ED005209CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA456DB42A9075DB005209CC /* UIImageView+URL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DA97D6102A8F912D00885FB2 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +114,11 @@
 		DA97D61B2A8F912D00885FB2 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				DA456DB62A9075ED005209CC /* Extensions */,
+				DA456DAD2A906E94005209CC /* Model */,
+				DA456DAC2A906E6F005209CC /* API */,
+				DA456DA92A90698D005209CC /* Cells */,
+				DA456DA82A906977005209CC /* Controllers */,
 				DA97D6302A8F918600885FB2 /* Support */,
 				DA97D6252A8F912E00885FB2 /* Assets.xcassets */,
 				DA97D6272A8F912E00885FB2 /* LaunchScreen.storyboard */,
@@ -66,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				DA97D61E2A8F912D00885FB2 /* SceneDelegate.swift */,
-				DA97D6332A8F922200885FB2 /* LaunchScreenViewController.swift */,
 				DA97D61C2A8F912D00885FB2 /* AppDelegate.swift */,
 			);
 			path = Support;
@@ -142,7 +206,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA456DB52A9075DB005209CC /* UIImageView+URL.swift in Sources */,
 				DA97D61D2A8F912D00885FB2 /* AppDelegate.swift in Sources */,
+				DA456DAB2A906E62005209CC /* DataServise.swift in Sources */,
+				DA456DB12A906FB7005209CC /* Response.swift in Sources */,
+				DA456DB82A908A19005209CC /* DetailsTableViewController.swift in Sources */,
+				DA456DB32A9074BF005209CC /* Info.swift in Sources */,
+				DA456DAF2A906EA1005209CC /* Character.swift in Sources */,
+				DA456DA52A90687D005209CC /* MainScreenViewController.swift in Sources */,
+				DA456DA72A906967005209CC /* MainCollectionViewCell.swift in Sources */,
 				DA97D6342A8F922300885FB2 /* LaunchScreenViewController.swift in Sources */,
 				DA97D61F2A8F912D00885FB2 /* SceneDelegate.swift in Sources */,
 			);
