@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController {
+final class MainScreenViewController: UIViewController {
 
-    private var characters: [Character] = []
+    private var characters: [Character]
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -20,16 +20,23 @@ class MainScreenViewController: UIViewController {
         return collection
     }()
     
+    init(characters: [Character]) {
+        self.characters = characters
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Characters"
-        navigationItem.titleView?.tintColor = .white
         setUpCollectionView()
-        fetchCharacters()
+      setupNavigationController()
       
     }
-    
+  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = CGRect(x: 0,
@@ -39,14 +46,11 @@ class MainScreenViewController: UIViewController {
     }
     
     //MARK: private
-    private func fetchCharacters() {
-        DataService().loadCharacters { [weak self] result in
-            self?.characters = result
-           print(result)
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
-        }
+    private func setupNavigationController() {
+        navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.tabBarItem.title = "Characters"
+        navigationItem.title = "Character"
     }
     
     private func setUpCollectionView() {
@@ -58,7 +62,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -88,9 +91,8 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailsVC = DetailsTableViewController()
         let character = characters[indexPath.row]
-        
+        let detailsVC = DetailsTableViewController(character: character)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }

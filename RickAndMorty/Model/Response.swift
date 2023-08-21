@@ -7,15 +7,7 @@
 
 import Foundation
 
-struct Response: Decodable {
-    
-   
-    var characters: [Character]
-    
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case characters = "results"
-      
-    }
+struct Response<T: Decodable>: Decodable {
+    let results: [T]
 }
+

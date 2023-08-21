@@ -7,7 +7,9 @@
 
 import UIKit
 
-class LaunchScreenViewController: UIViewController {
+final class LaunchScreenViewController: UIViewController {
+    
+    private var characters: [Character] = []
     
     private var baseView: UIImageView = {
         let imageView = UIImageView()
@@ -35,15 +37,16 @@ class LaunchScreenViewController: UIViewController {
         imageView.image = UIImage(named: "label")
         return imageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(baseView)
         baseView.addSubview(labelView)
         baseView.addSubview(imageView)
         
         view.backgroundColor = .black
+        fetchCharacters()
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,7 +58,7 @@ class LaunchScreenViewController: UIViewController {
                                 height: view.bounds.height)
         let width: CGFloat = 140
         let heigth: CGFloat = 40
-       
+        
         labelView.frame = CGRect(x: view.frame.midX - width/2,
                                  y: view.frame.minY + view.bounds.height/4,
                                  width: width,
@@ -68,4 +71,20 @@ class LaunchScreenViewController: UIViewController {
                                  width: labelWidth,
                                  height: labelHeigth)
     }
+    
+    private func fetchCharacters() {
+        DataService().loadCharacters { [weak self] result in
+            self?.characters = result
+            DispatchQueue.main.async {
+                self?.dataLoadedSuccessfully()
+                
+            }
+        }
+    }
+    
+    private func dataLoadedSuccessfully() {
+        let vc = MainScreenViewController(characters: characters)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
