@@ -94,7 +94,7 @@ final class InfoTableViewCell: UITableViewCell {
     }
     
     // MARK: public
-    func configure(with model: Character) {
+    public func configure(with model: Character) {
         speciesValueLabel.text = model.species
         var type = model.type
         if type.isEmpty {
@@ -103,7 +103,7 @@ final class InfoTableViewCell: UITableViewCell {
         typeValueLabel.text = type
         genderValueLabel.text = model.gender
     }
-    
+    //MARK: private
         private func setupConstraints() {
             let inset:CGFloat = 15
             baseView.translatesAutoresizingMaskIntoConstraints = false

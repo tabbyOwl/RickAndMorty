@@ -16,7 +16,6 @@ final class MainScreenViewController: UIViewController {
         layout.estimatedItemSize = .zero
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .black
-    
         return collection
     }()
     
@@ -33,8 +32,8 @@ final class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         
         setUpCollectionView()
-      setupNavigationController()
-      
+        createTitleView()
+        setupNavigationItems()
     }
   
     override func viewDidLayoutSubviews() {
@@ -46,13 +45,6 @@ final class MainScreenViewController: UIViewController {
     }
     
     //MARK: private
-    private func setupNavigationController() {
-        navigationController?.navigationBar.barTintColor = .clear
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.tabBarItem.title = "Characters"
-        navigationItem.title = "Character"
-    }
-    
     private func setUpCollectionView() {
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         collectionView.delegate = self
@@ -71,8 +63,20 @@ final class MainScreenViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    private func setupNavigationItems() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
+    private func createTitleView() {
+        let customTitleLabel = UILabel()
+               customTitleLabel.text = "Characters"
+               customTitleLabel.textColor = .white
+               customTitleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+               navigationItem.leftBarButtonItem = UIBarButtonItem(customView: customTitleLabel)
+    }
 }
-
 
 // MARK: Collection data source
 

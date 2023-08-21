@@ -5,9 +5,6 @@
 //  Created by Svetlana Oleinikova on 19.08.2023.
 //
 
-import Foundation
-
-
 struct Episode: Decodable {
     let id : Int
     let name: String

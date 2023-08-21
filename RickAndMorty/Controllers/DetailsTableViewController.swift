@@ -16,7 +16,7 @@ final class DetailsTableViewController: UIViewController {
     private var allEpisodes: [Episode] = [] {
         didSet {
             setEpisodes()
-          
+            
             DispatchQueue.main.async { [self] in
                 self.tableView.reloadData()
                 if !episodes.isEmpty {
@@ -35,7 +35,7 @@ final class DetailsTableViewController: UIViewController {
     }()
     
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-   
+    
     init(character: Character) {
         self.character = character
         super.init(nibName: nil, bundle: nil)
@@ -64,7 +64,16 @@ final class DetailsTableViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-  
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    //MARK: private
     private func setupActivityIndicator() {
         activityIndicator.center = view.center
         view.addSubview(activityIndicator)
@@ -134,7 +143,7 @@ final class DetailsTableViewController: UIViewController {
 extension DetailsTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
+        
         if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeTableViewCell.identifier) else { return UITableViewCell() }
             (cell as? EpisodeTableViewCell)?.configure(with: episodes[indexPath.row])
@@ -142,7 +151,7 @@ extension DetailsTableViewController: UITableViewDelegate, UITableViewDataSource
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OriginTableViewCell.identifier) else { return UITableViewCell() }
             (cell as? OriginTableViewCell)?.configure(name: character.origin.name, type: origin?.type ?? "Unknown")
-                return cell
+            return cell
         } else if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier) else { return UITableViewCell() }
             (cell as? InfoTableViewCell)?.configure(with: character)
@@ -170,23 +179,28 @@ extension DetailsTableViewController: UITableViewDelegate, UITableViewDataSource
             return 130
         }
     }
-  
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var titleForSection = ""
         if section == 0 {
-            return "Info"
+            titleForSection = "Info"
         } else if section == 1 {
-            return "Origin"
+            titleForSection = "Origin"
         } else if section == 2 {
-            return "Episodes"
+            titleForSection = "Episodes"
         }
-        return ""
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.white
+        
+        let headerView = UIView()
+        headerView.backgroundColor = .black
+        
+        let titleLabel = UILabel()
+        titleLabel.text = titleForSection
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.textColor = .white
+        titleLabel.frame = CGRect(x: 15, y: 0, width: tableView.bounds.size.width - 30, height: 30)
+        headerView.addSubview(titleLabel)
+        
+        return headerView
     }
 }
 

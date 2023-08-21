@@ -44,7 +44,6 @@ final class LaunchScreenViewController: UIViewController {
         view.addSubview(baseView)
         baseView.addSubview(labelView)
         baseView.addSubview(imageView)
-        
         view.backgroundColor = .black
         fetchCharacters()
     }
@@ -72,6 +71,7 @@ final class LaunchScreenViewController: UIViewController {
                                  height: labelHeigth)
     }
     
+    //MARK: private
     private func fetchCharacters() {
         DataService().loadCharacters { [weak self] result in
             self?.characters = result
@@ -84,6 +84,7 @@ final class LaunchScreenViewController: UIViewController {
     
     private func dataLoadedSuccessfully() {
         let vc = MainScreenViewController(characters: characters)
+        vc.navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
     

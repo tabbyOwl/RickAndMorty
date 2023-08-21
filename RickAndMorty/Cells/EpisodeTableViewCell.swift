@@ -57,13 +57,13 @@ final class EpisodeTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configure(with model: Episode) {
+    // MARK: public
+    public func configure(with model: Episode) {
         nameLabel.text = model.name
         dateLabel.text = model.date
         episodeLabel.text = makeString(inputString: model.episode)
     }
-    
+    //MARK: private
     private func makeString(inputString: String) -> String {
         var string = ""
         if let seasonIndex = inputString.firstIndex(of: "S"),

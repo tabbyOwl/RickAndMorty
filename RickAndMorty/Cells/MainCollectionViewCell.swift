@@ -67,8 +67,8 @@ final class MainCollectionViewCell: UICollectionViewCell {
                                  width: width,
                                  height: height/5)
     }
-    
-    func configure(with model: Character) {
+    // MARK: public
+    public func configure(with model: Character) {
         setupImage(url: model.image)
         nameLabel.text = model.name
     }

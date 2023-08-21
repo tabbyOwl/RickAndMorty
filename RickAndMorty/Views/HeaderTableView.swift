@@ -14,7 +14,7 @@ class HeaderTableView: UITableViewHeaderFooterView {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-         imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 20
         return imageView
     }()
     
@@ -46,6 +46,26 @@ class HeaderTableView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        let width:CGFloat = 150
+        let height:CGFloat = 150
+
+        imageView.frame = CGRect(x: contentView.frame.width/2 - width/2,
+                                y: 5,
+                                width: width,
+                                height: height)
+        nameLabel.frame = CGRect(x: 0,
+                                 y: imageView.bottom + 5,
+                                 width: contentView.width,
+                                 height: 20)
+        statusLabel.frame = CGRect(x: 0,
+                                   y: nameLabel.bottom + 5,
+                                width: contentView.width,
+                                 height: 15)
+    }
+    
     public func configure(with model: Character) {
         setupImage(url: model.image)
         nameLabel.text = model.name
@@ -57,27 +77,6 @@ class HeaderTableView: UITableViewHeaderFooterView {
         if let url = URL(string: url) {
             imageView.load(url: url)
         }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        let width:CGFloat = 150
-        let height:CGFloat = 150
-
-        imageView.frame = CGRect(x: contentView.frame.width/2 - width/2,
-                                y: 5,
-                                width: width,
-                                height: height)
-
-        nameLabel.frame = CGRect(x: 0,
-                                 y: imageView.bottom + 5,
-                                 width: contentView.width,
-                                 height: 20)
-        statusLabel.frame = CGRect(x: 0,
-                                   y: nameLabel.bottom + 5,
-                                width: contentView.width,
-                                 height: 15)
     }
 }
     

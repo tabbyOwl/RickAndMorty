@@ -68,17 +68,16 @@ final class OriginTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configure(name: String, type: String) {
+    // MARK: public
+    public func configure(name: String, type: String) {
         if let index = name.firstIndex(of: "(") {
             nameLabel.text = String(name.prefix(upTo: index))
         }
         typeLabel.text = type
     }
-    
-    
+    //MARK: private
     private func setupConstraints() {
-        let inset:CGFloat = 5
+        let inset:CGFloat = 15
         baseView.translatesAutoresizingMaskIntoConstraints = false
         viewForPicture.translatesAutoresizingMaskIntoConstraints = false
         pictureView.translatesAutoresizingMaskIntoConstraints = false
@@ -91,17 +90,17 @@ final class OriginTableViewCell: UITableViewCell {
             baseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
             baseView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
             
-            viewForPicture.topAnchor.constraint(equalTo: baseView.topAnchor, constant: inset),
-            viewForPicture.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: inset),
-            viewForPicture.widthAnchor.constraint(equalTo: baseView.heightAnchor, constant: -inset),
+            viewForPicture.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 5),
+            viewForPicture.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 5),
+            viewForPicture.widthAnchor.constraint(equalTo: baseView.heightAnchor, constant: -5),
             viewForPicture.centerYAnchor.constraint(equalTo: baseView.centerYAnchor),
             
             pictureView.centerYAnchor.constraint(equalTo: viewForPicture.centerYAnchor),
             pictureView.centerXAnchor.constraint(equalTo: viewForPicture.centerXAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: viewForPicture.trailingAnchor, constant: inset*3),
-            nameLabel.topAnchor.constraint(equalTo: baseView.topAnchor, constant: inset*3),
+            nameLabel.leadingAnchor.constraint(equalTo: viewForPicture.trailingAnchor, constant: inset),
+            nameLabel.topAnchor.constraint(equalTo: baseView.topAnchor, constant: inset),
             
-            typeLabel.leadingAnchor.constraint(equalTo: viewForPicture.trailingAnchor, constant: inset*3),
+            typeLabel.leadingAnchor.constraint(equalTo: viewForPicture.trailingAnchor, constant: inset),
             typeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: inset)
         ])
     }
